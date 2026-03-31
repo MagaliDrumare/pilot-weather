@@ -142,6 +142,8 @@ export default function App() {
         arrTaf={arrTaf}
         depIcao={depIcao}
         arrIcao={arrIcao}
+        depName={departure?.name}
+        arrName={arrival?.name}
       />
 
       {/* Footer */}

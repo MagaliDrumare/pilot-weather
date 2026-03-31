@@ -1,21 +1,24 @@
 import React from 'react';
 
-export default function MetarPanel({ depMetar, arrMetar, depTaf, arrTaf, depIcao, arrIcao }) {
+export default function MetarPanel({ depMetar, arrMetar, depTaf, arrTaf, depIcao, arrIcao, depName, arrName }) {
   return (
     <div style={styles.container}>
       <h3 style={styles.title}>METAR / TAF</h3>
       <div style={styles.grid}>
-        <MetarCard label={`DEP ${depIcao}`} metar={depMetar} taf={depTaf} />
-        <MetarCard label={`ARR ${arrIcao}`} metar={arrMetar} taf={arrTaf} />
+        <MetarCard label={`DEP ${depIcao}`} name={depName} metar={depMetar} taf={depTaf} />
+        <MetarCard label={`ARR ${arrIcao}`} name={arrName} metar={arrMetar} taf={arrTaf} />
       </div>
     </div>
   );
 }
 
-function MetarCard({ label, metar, taf }) {
+function MetarCard({ label, name, metar, taf }) {
   return (
     <div style={styles.card}>
-      <div style={styles.cardLabel}>{label}</div>
+      <div style={styles.cardLabel}>
+        {label}
+        {name && <span style={styles.airportName}> — {name}</span>}
+      </div>
       <div style={styles.section}>
         <span style={styles.tag}>METAR</span>
         <pre style={styles.raw}>
@@ -90,6 +93,13 @@ const styles = {
     marginBottom: 10,
     letterSpacing: 1,
     fontFamily: 'monospace',
+  },
+  airportName: {
+    fontWeight: 500,
+    fontSize: 12,
+    color: '#94a3b8',
+    letterSpacing: 0,
+    fontFamily: 'inherit',
   },
   section: { marginBottom: 4 },
   tag: {
