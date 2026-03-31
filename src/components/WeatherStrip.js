@@ -29,7 +29,7 @@ function WindArrow({ direction }) {
   );
 }
 
-export default function WeatherStrip({ waypoints, waypointWeather, loading }) {
+function WeatherStrip({ waypoints, waypointWeather, loading }) {
   if (!waypoints || waypoints.length === 0) return null;
 
   return (
@@ -112,6 +112,8 @@ export default function WeatherStrip({ waypoints, waypointWeather, loading }) {
     </div>
   );
 }
+
+export default React.memo(WeatherStrip);
 
 const styles = {
   container: {

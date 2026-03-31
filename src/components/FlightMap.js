@@ -32,7 +32,7 @@ function airportIcon() {
   });
 }
 
-export default function FlightMap({ waypoints, waypointWeather }) {
+function FlightMap({ waypoints, waypointWeather }) {
   if (!waypoints || waypoints.length < 2) {
     return (
       <div style={styles.placeholder}>
@@ -108,6 +108,8 @@ export default function FlightMap({ waypoints, waypointWeather }) {
     </div>
   );
 }
+
+export default React.memo(FlightMap);
 
 const styles = {
   mapWrap: {
