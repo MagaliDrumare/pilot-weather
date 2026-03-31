@@ -1,6 +1,6 @@
 import airports from '../data/airports';
 
-const AVWX_BASE = 'https://aviationweather.gov/api/data';
+const AVWX_BASE = '/api/avwx';
 
 function fetchWithTimeout(url, timeoutMs = 8000) {
   const controller = new AbortController();
@@ -8,7 +8,7 @@ function fetchWithTimeout(url, timeoutMs = 8000) {
   return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(id));
 }
 
-// Batch METAR — direct call (aviationweather.gov allows browser CORS)
+// Batch METAR — proxied via /api/avwx to avoid CORS
 export async function fetchMetarBatch(icaos) {
   try {
     const ids = icaos.join(',');
